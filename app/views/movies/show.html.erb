@@ -1,5 +1,26 @@
 <div class="page-header">
   <h3>Movie #<%= @movie.id %></h3>
+  <form action="/create_bookmark" method="post">
+    <!-- Hidden input for authenticity token to protect from forgery -->
+    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+    <!-- Label and input for user_id -->
+    <div class="form-group">
+
+<!--  hidden and prepopulated movie id -->
+      <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
+    </div>
+
+    <!--hidden input for prepopulated movie_id -->
+    <input type="hidden" name="movie_id" value="<%=@movie.id%>">
+    </div>
+
+    <button class="btn btn-success">
+      Create Bookmark
+    </button>
+    or
+    <a href="/bookmarks">Cancel</a>
+  </form>
 </div>
 
 <div class="row">
